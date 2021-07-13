@@ -1,0 +1,19 @@
+
+body {
+  display: grid;
+  grid-template: 8vh 80vh 8vh/1fr 80vh 1fr;
+  height: 100%;
+}
+
+#sketchpad {
+  border: 1px solid black;
+  height: 80vh;
+  width: 80vh;
+  min-height: 400px;
+  min-width: 400px;
+  grid-row: 2/3;
+  grid-column:2/3;
+  display:grid;
+}
+
+
