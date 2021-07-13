@@ -9,9 +9,10 @@ const sketchpad = document.querySelector('#sketchpad');
 let padWidth = sketchpad.clientWidth;
 let padHeight = sketchpad.clientHeight;
 
+//create sketchpad
 function drawCells (cellCount) {
-  let cellWidth = padWidth / cellCount - 2;
-  let cellHeight = padHeight / cellCount - 2;
+  let cellWidth = (padWidth - 2) / cellCount;
+  let cellHeight = (padHeight - 2) / cellCount;
   let templateAreas = ``;
 // create rows
   for (let r = 0; r < cellCount; r++) {
@@ -30,3 +31,15 @@ function drawCells (cellCount) {
 }
 
 drawCells(16);
+
+// change cell colors
+
+function changeColor(e){
+  e.target.classList.add('touched');
+}
+
+const cells = document.querySelectorAll('.cell');
+cells.forEach(cell => { cell.addEventListener('mouseover', event => {
+    cell.classList.add('touched');
+  })
+});
