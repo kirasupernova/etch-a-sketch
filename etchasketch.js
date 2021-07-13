@@ -32,14 +32,29 @@ function drawCells (cellCount) {
 
 drawCells(16);
 
+// create new sketchpad
+
+function newSketchpad() {
+  let cellCount = prompt('How many cells would you like your new Sketchpad to have? (Must be less than 100!)');
+  if (cellCount > 100) alert('Too many cells!');
+  else {
+    while(sketchpad.lastElementChild) {
+      sketchpad.removeChild(sketchpad.lastElementChild);
+    }
+    drawCells(cellCount);
+    let cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => { cell.addEventListener('mouseover', changeColor)});
+  }
+}
+
+const wipeButton = document.querySelector('#wipe');
+wipeButton.addEventListener('click', newSketchpad);
+
 // change cell colors
 
-function changeColor(e){
-  e.target.classList.add('touched');
+function changeColor() {
+    this.classList.add('touched');
 }
 
 const cells = document.querySelectorAll('.cell');
-cells.forEach(cell => { cell.addEventListener('mouseover', event => {
-    cell.classList.add('touched');
-  })
-});
+cells.forEach(cell => { cell.addEventListener('mouseover', changeColor)});
